@@ -22,7 +22,9 @@ public class GetJoke extends AsyncTask<MainActivity, Void, String> {
 
     @Override
     protected String doInBackground(MainActivity... params) {
-        mActivity = params[0];
+        if (params != null) {
+            mActivity = params[0];
+        }
         if (mApiService == null) {
             MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
                                                         new AndroidJsonFactory(), null)

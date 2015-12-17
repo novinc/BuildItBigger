@@ -1,7 +1,7 @@
 package com.udacity.gradle.builditbigger;
 
 import android.test.AndroidTestCase;
-import android.test.suitebuilder.annotation.SmallTest;
+import android.test.suitebuilder.annotation.MediumTest;
 
 import java.util.concurrent.ExecutionException;
 
@@ -17,10 +17,11 @@ public class GetJokeTest extends AndroidTestCase{
         getJokeTask = new GetJoke();
     }
 
-    @SmallTest
+    @MediumTest
     public void testGetJoke() {
         try {
-            String joke = getJokeTask.execute((MainActivity[]) null).get();
+            MainActivity[] activities = null;
+            String joke = getJokeTask.execute(activities).get();
             assertNotNull(joke);
             assertTrue(joke.length() >= 0);
         } catch (InterruptedException | ExecutionException e) {

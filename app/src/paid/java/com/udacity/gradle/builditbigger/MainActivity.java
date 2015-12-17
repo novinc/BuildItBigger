@@ -1,13 +1,12 @@
 package com.udacity.gradle.builditbigger;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.ProgressBar;
 
 import com.example.JokeFactory;
 import com.example.jokeactivity.JokeActivity;
@@ -23,7 +22,6 @@ public class MainActivity extends AppCompatActivity implements GetJoke.JokeCallb
         setContentView(R.layout.activity_main);
         mJokeFactory = new JokeFactory();
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -48,6 +46,10 @@ public class MainActivity extends AppCompatActivity implements GetJoke.JokeCallb
     }
 
     public void tellJoke(View view){
+        ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressbar);
+        if (progressBar != null) {
+            progressBar.setVisibility(View.VISIBLE);
+        }
         new GetJoke().execute(this);
     }
 
@@ -57,5 +59,9 @@ public class MainActivity extends AppCompatActivity implements GetJoke.JokeCallb
         Intent intent = new Intent(getApplicationContext(), JokeActivity.class);
         intent.putExtra(JokeActivity.JOKE_TAG, joke);
         startActivity(intent);
+        ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressbar);
+        if (progressBar != null) {
+            progressBar.setVisibility(View.INVISIBLE);
+        }
     }
 }
