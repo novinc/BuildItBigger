@@ -41,6 +41,8 @@ public class GetJoke extends AsyncTask<MainActivity, Void, String> {
 
     @Override
     protected void onPostExecute(String s) {
-        mActivity.joke(s);
+        if (mActivity != null) {
+            mActivity.joke(s);
+        }
     }
 }
