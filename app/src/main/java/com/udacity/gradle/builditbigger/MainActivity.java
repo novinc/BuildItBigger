@@ -13,7 +13,7 @@ import com.example.JokeFactory;
 import com.example.jokeactivity.JokeActivity;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements GetJoke.JokeCallback {
 
     JokeFactory mJokeFactory;
 
@@ -48,11 +48,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view){
-        String joke = mJokeFactory.makeJoke();
+        new GetJoke().execute(this);
+    }
+
+
+    @Override
+    public void joke(String joke) {
         Intent intent = new Intent(getApplicationContext(), JokeActivity.class);
         intent.putExtra(JokeActivity.JOKE_TAG, joke);
         startActivity(intent);
     }
-
-
 }

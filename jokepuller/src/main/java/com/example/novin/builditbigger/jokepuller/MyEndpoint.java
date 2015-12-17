@@ -6,6 +6,7 @@
 
 package com.example.novin.builditbigger.jokepuller;
 
+import com.example.JokeFactory;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
@@ -26,11 +27,19 @@ public class MyEndpoint {
 
     /** A simple endpoint method that takes a name and says Hi back */
     @ApiMethod(name = "sayHi")
-    public MyBean sayHi(@Named("name") String name) {
-        MyBean response = new MyBean();
-        response.setData("Hi, " + name);
+    public Joke sayHi(@Named("name") String name) {
+        Joke response = new Joke();
+        response.setJoke("Hi, " + name);
 
         return response;
+    }
+
+    @ApiMethod(name = "getJoke")
+    public Joke getJoke() {
+        JokeFactory factory = new JokeFactory();
+        String jokeString = factory.makeJoke();
+        Joke joke = new Joke(jokeString);
+        return joke;
     }
 
 }
