@@ -17,3 +17,9 @@ allprojects {
         jcenter()
     }
 }
+
+//task runJokePuller(dependsOn: ':jokepuller:appengineRun')
+
+//task shutDownPuller(dependsOn: ':jokepuller:appengineStop')
+
+//tasks.shutDownPuller.mustRunAfter tasks.runJokePuller
