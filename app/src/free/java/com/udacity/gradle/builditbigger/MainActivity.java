@@ -20,7 +20,6 @@ import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity implements GetJoke.JokeCallback {
 
-    JokeFactory mJokeFactory;
     InterstitialAd mInterstitialAd;
     String mJoke;
     boolean adShowing;
@@ -29,7 +28,6 @@ public class MainActivity extends AppCompatActivity implements GetJoke.JokeCallb
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mJokeFactory = new JokeFactory();
         mInterstitialAd = new InterstitialAd(this);
         mInterstitialAd.setAdUnitId(getString(R.string.interstitial_ad_unit_id));
         mInterstitialAd.setAdListener(new AdListener() {

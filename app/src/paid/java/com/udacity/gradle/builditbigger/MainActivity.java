@@ -14,13 +14,10 @@ import com.example.jokeactivity.JokeActivity;
 
 public class MainActivity extends AppCompatActivity implements GetJoke.JokeCallback {
 
-    JokeFactory mJokeFactory;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mJokeFactory = new JokeFactory();
     }
 
     @Override
