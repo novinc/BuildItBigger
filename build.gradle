@@ -18,8 +18,15 @@ allprojects {
     }
 }
 
-//task runJokePuller(dependsOn: ':jokepuller:appengineRun')
+task tests {
+    dependsOn ':libjokeprovider:test', ':libjokeactivity:connectedAndroidTest', ':app:connectedAndroidTest'
+}
 
-//task shutDownPuller(dependsOn: ':jokepuller:appengineStop')
+task customTask {
+    description "Starts the local server, runs tests, and shuts down server"
+    group "my tasks"
+    dependsOn ':jokepuller:appengineRun', tasks.getByName('tests')
+    finalizedBy ':jokepuller:appengineStop'
+}
 
-//tasks.shutDownPuller.mustRunAfter tasks.runJokePuller
+tasks.getByName('tests').mustRunAfter tasks.getByPath(':jokepuller:appengineRun')
