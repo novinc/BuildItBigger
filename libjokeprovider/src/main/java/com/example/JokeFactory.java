@@ -3,6 +3,7 @@ package com.example;
 import java.util.ArrayList;
 import java.util.List;
 
+// credit for jokes goes to https://github.com/KiaFathi/tambalAPI
 public class JokeFactory {
 
     List<String> jokes;
